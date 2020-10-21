@@ -24,15 +24,6 @@ public class ClienteDto {
 		this.idade = idade;
 		this.endereco = endereco;
 	}
-	
-	public ClienteDto(Long id, String nome, String sexo, LocalDate dataNasc, int idade, Endereco endereco) {
-		this.id = id;
-		this.nome = nome;
-		this.sexo = sexo;
-		this.dataNasc = dataNasc;
-		this.idade = idade;
-		this.endereco = endereco;
-	}
 
 	public Long getId() {
 		return id;

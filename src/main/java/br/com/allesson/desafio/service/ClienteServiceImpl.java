@@ -61,7 +61,7 @@ public class ClienteServiceImpl implements ClienteService {
 	
 	public List<ClienteDto> filtrarNome(String nome) {
 		List<ClienteDto> clienteDto = findByNomeLike(nome);
-		if (clienteDto.isEmpty()) {
+		if (clienteDto == null || clienteDto.isEmpty()) {
 			throw new PersistenceException("Nome informado não encontrado.");
 		}
 		return clienteDto;
@@ -87,7 +87,7 @@ public class ClienteServiceImpl implements ClienteService {
 		PageRequest pageable = PageRequest.of(pagina, TAMANHO_PAGINA, Sort.Direction.ASC,
                 "id");
 		Page<Cliente> cliente = clienteRepository.findAll(pageable);
-		if(cliente.isEmpty()) {
+		if(cliente == null || cliente.isEmpty()) {
 			throw new PersistenceException("Não existem dados para ser listado.");
 		}
 		clienteDto = modelMapper.map(cliente,  new TypeToken<Page<ClienteDto>>(){}.getType());

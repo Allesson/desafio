@@ -36,7 +36,7 @@ public class ClienteController {
 	
 	@PostMapping
 	@ApiOperation(value = "Insere um novo cliente")
-	public ResponseEntity<ClienteDto> insert(@RequestBody @Valid ClienteInserirDto obj){
+	public ResponseEntity<ClienteDto> inserirCliente(@RequestBody @Valid ClienteInserirDto obj){
 		ClienteDto clienteDto = service.inserirCliente(obj);
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
 				.buildAndExpand(clienteDto.getId()).toUri();
@@ -57,7 +57,7 @@ public class ClienteController {
 	
 	@GetMapping
 	@ApiOperation(value = "Consultar cliente pelo nome")
-	public ResponseEntity<List<ClienteDto>> filtrarNome(@RequestParam(value = "nome", defaultValue = "") String nome){
+	public ResponseEntity<List<ClienteDto>> filtrarNome(@RequestParam(value = "nome", required = true) String nome){
 		return ResponseEntity.ok().body(service.filtrarNome(nome));
 	}
 	

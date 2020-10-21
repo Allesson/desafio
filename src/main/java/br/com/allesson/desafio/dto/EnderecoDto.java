@@ -5,21 +5,6 @@ public class EnderecoDto {
 	private Long id;
 	private String cidade;
 	private String estado;
-	
-	public EnderecoDto() {
-		
-	}
-
-	public EnderecoDto(String cidade, String estado) {
-		this.cidade = cidade;
-		this.estado = estado;
-	}
-
-	public EnderecoDto(Long id, String cidade, String estado) {
-		this.id = id;
-		this.cidade = cidade;
-		this.estado = estado;
-	}
 
 	public Long getId() {
 		return id;

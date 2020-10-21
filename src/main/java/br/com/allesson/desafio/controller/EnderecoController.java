@@ -48,14 +48,14 @@ public class EnderecoController {
 	
 	@GetMapping(value = "/consultar-cidade")
 	@ApiOperation(value = "Consultar cidade pelo nome")
-	public ResponseEntity<List<EnderecoDto>> filtrarCidade(@RequestParam(value = "cidade", defaultValue = "") String cidade){
+	public ResponseEntity<List<EnderecoDto>> filtrarCidade(@RequestParam(value = "cidade", required = true) String cidade){
 		return ResponseEntity.ok().body(service.filtrarCidade(cidade));
 		
 	}
 	
 	@GetMapping(value = "/consultar-estado")
 	@ApiOperation(value = "Consultar cidade pelo estado")
-	public ResponseEntity<List<EnderecoDto>> filtrarEstado(@RequestParam(value = "estado", defaultValue = "") String estado){
+	public ResponseEntity<List<EnderecoDto>> filtrarEstado(@RequestParam(value = "estado", required = true) String estado){
 		return ResponseEntity.ok().body(service.filtrarEstado(estado));
 		
 	}

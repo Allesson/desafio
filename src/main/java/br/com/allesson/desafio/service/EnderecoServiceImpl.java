@@ -45,7 +45,7 @@ public class EnderecoServiceImpl implements EnderecoService {
 	
 	public List<EnderecoDto> filtrarCidade(String cidade){
 		List<EnderecoDto> enderecoDto = findByCidade(cidade);
-		if(enderecoDto.isEmpty()) {
+		if(enderecoDto == null || enderecoDto.isEmpty()) {
 			throw new PersistenceException("Cidade não encontrada.");
 		}
 		return enderecoDto;
@@ -53,7 +53,7 @@ public class EnderecoServiceImpl implements EnderecoService {
 	
 	public List<EnderecoDto> filtrarEstado(String estado){
 		List<EnderecoDto> enderecoDto = findByEstado(estado);
-		if(enderecoDto.isEmpty()) {
+		if(enderecoDto == null || enderecoDto.isEmpty()) {
 			throw new PersistenceException("Estado não encontrado.");
 		}
 		return enderecoDto;
@@ -72,7 +72,7 @@ public class EnderecoServiceImpl implements EnderecoService {
 		PageRequest pageable = PageRequest.of(pagina, TAMANHO_PAGINA, Sort.Direction.ASC,
                 "id");
 		Page<Endereco> endereco = enderecoRepository.findAll(pageable);
-		if(endereco.isEmpty()) {
+		if(endereco == null || endereco.isEmpty()) {
 			throw new PersistenceException("Não existem dados para ser listado.");
 		}
 		enderecoDto = modelMapper.map(endereco,  new TypeToken<Page<EnderecoDto>>(){}.getType());
